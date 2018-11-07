@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { FlatList, ListView, Text } from 'react-native';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import styles from './styles';
 import Store from './Store';
 import PropTypes from 'prop-types';
 
-export default class StoreList extends Component {
+class StoreList extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -32,12 +33,6 @@ export default class StoreList extends Component {
         }
     }
 
-    shouldComponentUpdate = (nextProps) => {
-        if (!this.props.data.length && nextProps.data.length !== this.props.data.length)
-            return true
-        return false
-    }
-
     renderItem = (item) => {
         return <Store item={item} action={this.props.action} />;
     };
@@ -56,3 +51,16 @@ StoreList.propTypes = {
     data: PropTypes.array,
     action: PropTypes.func
 }
+
+function mapStateToProps(state) {
+    return {
+        data: state.listReducer.list
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {}
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(StoreList);
