@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
-import { FlatList, ListView, Text } from 'react-native';
-import _ from 'lodash';
-import styles from './styles';
-import Store from './Store';
+import React, { PureComponent } from 'react'
+import FlatList from 'react-native/Libraries/Lists/FlatList';
+import Store from './Store'
 import PropTypes from 'prop-types';
 
-export default class StoreList extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-            data: []
-        };
+const viewabilityConfig = {
+    minimumViewTime: 3000,
+    viewAreaCoveragePercentThreshold: 100,
+    waitForInteraction: true,
+};
+
+export default class StoreList extends PureComponent {
+    _renderItemComponent = ({ item }) => {
+        return (
+            <Store action={this.props.action} item={item} />
+        )
     }
 
-    componentDidMount = () => {
-        const { data } = this.props
-        this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(data),
-            data
-        })
+    _shouldItemUpdate = (prev, next) => {
+        return prev.item !== next.item;
     }
 
-    componentWillReceiveProps = (prevProps) => {
-        const { data } = this.props
-        if (!_.isEqual(data, prevProps.data)) {
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(prevProps.data),
-                data: prevProps.data
-            })
-        }
+    _getItemLayout = (data, index) => {
+        return { length: 50, offset: 50 * index, index }
     }
 
-    renderItem = (item) => {
-        return <Store item={item} action={this.props.action} />;
-    };
+    _keyExtractor = (item, index) => {
+        return index.toString();
+    }
 
     render() {
-        return (<ListView
-            enableEmptySections
-            contentContainerStyle={styles.grid}
-            dataSource={this.state.dataSource}
-            renderRow={this.renderItem}
-        />)
+        return (
+            <FlatList
+                data={this.props.data}
+                getItemLayout={this._getItemLayout}
+                key={'List'}
+                legacyImplementation={false}
+                numColumns={2}
+                renderItem={this._renderItemComponent}
+                shouldItemUpdate={this._shouldItemUpdate}
+                viewabilityConfig={viewabilityConfig}
+                keyExtractor={this._keyExtractor}
+                directionalLockEnabled={true}
+            />
+        )
     }
 }
 

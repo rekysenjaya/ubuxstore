@@ -33,9 +33,8 @@ export const failureLoadListAction = error => {
     }
 }
 
-export const clearStateAction = updateState => {
+export const clearStateAction = () => {
     return {
         type: LIST_CLEAR_STATE,
-        updateState,
     }
 }

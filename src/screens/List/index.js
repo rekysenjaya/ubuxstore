@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { Toast } from 'native-base';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { requestLoadListAction, requestLoadSearchListAction } from '../../actions/listActions'
+import { requestLoadListAction, requestLoadSearchListAction, clearStateAction } from '../../actions/listActions'
 import StoreList from '../../components/StoreList'
 import HeaderFilter from '../../components/HeaderFilter'
 
@@ -20,6 +20,10 @@ class List extends Component {
 
     componentDidMount = () => {
         this.props.requestLoadListActions()
+    }
+
+    componentWillUnmount = () => {
+        this.props.clearStateActions()
     }
 
     _actionSearch = () => {
@@ -72,6 +76,9 @@ function mapDispatchToProps(dispatch) {
         },
         requestLoadSearchListActions(payload) {
             dispatch(requestLoadSearchListAction(payload))
+        },
+        clearStateActions() {
+            dispatch(clearStateAction())
         }
     };
 }
