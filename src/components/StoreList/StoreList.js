@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { FlatList, ListView, Text } from 'react-native';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import styles from './styles';
 import Store from './Store';
 import PropTypes from 'prop-types';
 
-class StoreList extends Component {
+export default class StoreList extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -51,16 +50,3 @@ StoreList.propTypes = {
     data: PropTypes.array,
     action: PropTypes.func
 }
-
-function mapStateToProps(state) {
-    return {
-        data: state.listReducer.list
-    };
-}
-function mapDispatchToProps(dispatch) {
-    return {}
-}
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(StoreList);

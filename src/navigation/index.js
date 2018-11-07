@@ -8,22 +8,19 @@ const StackNavigator = createStackNavigator(
     {
         List: {
             screen: List,
-            navigationOptions: ({ navigation }) => ({
-                title: `List`,
-            }),
+            navigationOptions: { header: null }
         },
         Detail: {
             screen: Detail,
-            navigationOptions: ({ navigation }) => ({
-                title: `Detail`,
-            }),
+            navigationOptions: { header: null }
         },
         Selected: {
             screen: Selected,
-            navigationOptions: ({ navigation }) => ({
-                title: `Selected`,
-            }),
+            navigationOptions: { header: null }
         }
+    },
+    {
+        initialRouteName: 'List',
     }
 );
 

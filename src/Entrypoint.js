@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { Root } from 'native-base';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import NavigationStack from 'src/navigation';
 import configureStore from 'src/store/configureStore';
@@ -15,7 +16,9 @@ export default class Entrypoint extends Component {
         return (
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
-                    <NavigationStack />
+                    <Root>
+                        <NavigationStack />
+                    </Root>
                 </PersistGate>
             </Provider>
         );

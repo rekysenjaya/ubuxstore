@@ -6,7 +6,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: AppStyles.colors.lightWhite
-    }
+    },
+    spinner: {
+        color: '#FFF'
+    },
 });
 
 export default styles;

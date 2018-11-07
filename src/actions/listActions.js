@@ -1,14 +1,21 @@
 import {
     LIST_REQUEST,
+    LIST_SEARCH_REQUEST,
     LIST_SUCCESS,
     LIST_FAILED,
     LIST_CLEAR_STATE,
 } from './actionTypes'
 
-export const requestLoadListAction = payload => {
+export const requestLoadListAction = () => {
     return {
-        type: LIST_REQUEST,
-        payload,
+        type: LIST_REQUEST
+    }
+}
+
+export const requestLoadSearchListAction = (payload) => {
+    return {
+        type: LIST_SEARCH_REQUEST,
+        payload
     }
 }
 

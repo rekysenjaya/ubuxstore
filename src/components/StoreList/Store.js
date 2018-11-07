@@ -7,7 +7,10 @@ import styles from './styles';
 import PropTypes from 'prop-types';
 
 export default class Store extends Component {
-    shouldComponentUpdate() {
+    shouldComponentUpdate = (nextProps) => {
+        if (!_.isEqual(this.props.item, nextProps.item)) {
+            return true
+        }
         return false
     }
     render() {

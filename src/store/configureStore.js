@@ -10,7 +10,7 @@ import sagas from 'src/sagas';
 const config = {
     key: 'root',
     storage,
-    blacklist: [],
+    blacklist: ['listReducer'],
     debug: true //to get useful logging
 };
 
