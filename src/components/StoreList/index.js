@@ -1,2 +1,2 @@
-import ActiveList from './ActiveList';
-export default ActiveList;
+import StoreList from './StoreList';
+export default StoreList;

@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity } from 'react-native';
+import { Card, CardItem } from 'native-base'
 import _ from 'lodash';
+import images from '../../config/images'
 import styles from './styles';
 import PropTypes from 'prop-types';
 
 export default class Store extends Component {
-    shouldComponentUpdate(nextProps) {
-        if (_.isEqual(this.props.item, nextProps.item)) {
-            return false;
-        }
-        return true;
+    shouldComponentUpdate() {
+        return false
     }
-
-    onPress = () => {
-        alert('Clicked ');
-    };
-
     render() {
         const { storeId, tradingName, status } = this.props.item;
-        return (
-            <TouchableOpacity onPress={() => this.onPress(storeId)}  >
-                <View style={styles.item}>
-                    <Text style={styles.store}>
-                        {tradingName}
-                    </Text>
-                </View>
-            </TouchableOpacity>
-        );
+        return (<TouchableOpacity style={styles.gridItem} onPress={() => this.props.action(storeId)}>
+            <Card style={styles.itemText}>
+                <CardItem>
+                    <Text style={styles.title} >{tradingName}</Text>
+                </CardItem>
+                <CardItem style={styles.statusList} >
+                    <Text style={styles.status} >status: {status}</Text>
+                </CardItem>
+            </Card>
+        </TouchableOpacity>);
     }
 }
 
-UserItem.propTypes = {
+Store.propTypes = {
     item: PropTypes.object
-};
+}
