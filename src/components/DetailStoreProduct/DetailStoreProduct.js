@@ -53,7 +53,7 @@ class DetailStoreProduct extends Component {
 
 DetailStoreProduct.propTypes = {
     navigation: PropTypes.object,
-    detailProduct: PropTypes.object,
+    detailProduct: PropTypes.array,
     storeId: PropTypes.string,
     requestLoadDetailsStoreProductActions: PropTypes.func,
     clearStateActions: PropTypes.func

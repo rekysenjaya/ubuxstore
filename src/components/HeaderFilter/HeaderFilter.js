@@ -46,7 +46,7 @@ HeaderFilter.propTypes = {
     search: PropTypes.string,
     status: PropTypes.string,
     setState: PropTypes.func,
-    children: PropTypes.object,
+    children: PropTypes.array,
     actionSearch: PropTypes.func,
     actionStatus: PropTypes.func
 }
