@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { Card, CardItem } from 'native-base'
 import _ from 'lodash';
-import images from '../../config/images'
 import styles from './styles';
 import PropTypes from 'prop-types';
 
@@ -14,8 +13,8 @@ export default class Store extends Component {
         return false
     }
     render() {
-        const { storeId, tradingName, status } = this.props.item;
-        return (<TouchableOpacity style={styles.gridItem} onPress={() => this.props.action(storeId)}>
+        const { tradingName, status } = this.props.item;
+        return (<TouchableOpacity style={styles.gridItem} onPress={() => this.props.action(this.props.item)}>
             <Card style={styles.itemText}>
                 <CardItem>
                     <Text style={styles.title} >{tradingName}</Text>
@@ -29,5 +28,6 @@ export default class Store extends Component {
 }
 
 Store.propTypes = {
-    item: PropTypes.object
+    item: PropTypes.object,
+    action: PropTypes.func
 }

@@ -7,10 +7,10 @@ const initialState = {
 };
 
 export const listReducer = createReducer(initialState, {
-    [actionTypes.LIST_REQUEST](state, action) {
+    [actionTypes.LIST_REQUEST](state) {
         return { ...state, list: [], loading: true };
     },
-    [actionTypes.LIST_SEARCH_REQUEST](state, action) {
+    [actionTypes.LIST_SEARCH_REQUEST](state) {
         return { ...state, list: [], loading: true };
     },
     [actionTypes.LIST_SUCCESS](state, action) {
@@ -19,7 +19,7 @@ export const listReducer = createReducer(initialState, {
     [actionTypes.LIST_FAILED](state) {
         return { ...state, loading: false };
     },
-    [actionTypes.LIST_CLEAR_STATE](state) {
+    [actionTypes.LIST_CLEAR_STATE]() {
         return initialState;
     }
 });

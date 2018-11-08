@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import { Dimensions } from 'react-native'
-import { Container, Content, Header, Body, Title, Item, Input, Picker, Icon, View } from 'native-base';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Container, Content, Header, Item, Input, Picker, Icon, View } from 'native-base'
+import { connect } from 'react-redux'
 import _ from 'lodash'
-import styles from './styles';
-import PropTypes from 'prop-types';
-
-const D = Dimensions.get('window')
+import styles from './styles'
+import PropTypes from 'prop-types'
 
 class HeaderFilter extends Component {
     render() {
@@ -45,6 +42,11 @@ class HeaderFilter extends Component {
 }
 
 HeaderFilter.propTypes = {
+    data: PropTypes.array,
+    search: PropTypes.string,
+    status: PropTypes.string,
+    setState: PropTypes.func,
+    children: PropTypes.object,
     actionSearch: PropTypes.func,
     actionStatus: PropTypes.func
 }
@@ -54,7 +56,7 @@ function mapStateToProps(state) {
         data: state.listReducer.list
     };
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
     return {}
 }
 export default connect(

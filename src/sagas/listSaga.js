@@ -11,7 +11,7 @@ export function* listAsync() {
             yield put(failureLoadListAction(response.error))
         }
     } catch (err) {
-        yield put(failureLoadListAction(errors.serverError))
+        yield put(failureLoadListAction(err))
     }
 }
 
@@ -24,6 +24,6 @@ export function* searchListAsync(payload) {
             yield put(failureLoadListAction(response.error))
         }
     } catch (err) {
-        yield put(failureLoadListAction(errors.serverError))
+        yield put(failureLoadListAction(err))
     }
 }

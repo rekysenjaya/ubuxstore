@@ -7,7 +7,7 @@ const getList = () => {
         .then(response => response.json())
         .then(json => {
             return json
-        })
+        }).catch(err => err)
 }
 
 const searchList = (body) => {
@@ -21,7 +21,7 @@ const searchList = (body) => {
         .then(response => response.json())
         .then(json => {
             return json
-        })
+        }).catch(err => err)
 }
 
 export {

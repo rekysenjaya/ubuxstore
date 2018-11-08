@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import { Toast } from 'native-base';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -56,7 +55,7 @@ class List extends Component {
         const data = this._filteList()
         return (
             <HeaderFilter setState={this._setState} actionSearch={this._actionSearch} actionStatus={this._actionStatus} {...this.state} >
-                <StoreList action={(storeId) => this.props.navigation.navigate('Detail', { storeId })} data={data} />
+                <StoreList action={(v) => this.props.navigation.navigate('Detail', { storeId: v.storeId, title: v.tradingName })} data={data} />
                 <Spinner visible={this.props.loading} textContent={"Loading..."} textStyle={styles.spinner} />
             </HeaderFilter>
         );
