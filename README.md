@@ -74,11 +74,11 @@ npm run lint
 
 ## User Guide
 
-<img src="src/assets/images/screen.jpeg" data-canonical-src="src/assets/images/screen.jpeg" width="200"/>
-<img src="src/assets/images/guide_home.png" data-canonical-src="src/assets/images/guide_home.png" width="200"/>
-<img src="src/assets/images/detail.jpeg" data-canonical-src="src/assets/images/detail.jpeg" width="200"/>
-<img src="src/assets/images/guide_list.png" data-canonical-src="src/assets/images/guide_list.png" width="200"/>
-<img src="src/assets/images/guide_cart.png" data-canonical-src="src/assets/images/guide_cart.png" width="200"/>
+<img src="src/assets/images/screen.jpeg" data-canonical-src="src/assets/images/screen.jpeg" style="float:left" width="200"/>
+<img src="src/assets/images/guide_home.png" data-canonical-src="src/assets/images/guide_home.png" style="float:left" width="200"/>
+<img src="src/assets/images/detail.jpeg" data-canonical-src="src/assets/images/detail.jpeg" style="float:left" width="200"/>
+<img src="src/assets/images/guide_list.png" data-canonical-src="src/assets/images/guide_list.png" style="float:left" width="200"/>
+<img src="src/assets/images/guide_cart.png" data-canonical-src="src/assets/images/guide_cart.png" style="float:left" width="200"/>
 
 Steps to use the application Ubux Store
  1. store list, you can choose a store just by clicking
