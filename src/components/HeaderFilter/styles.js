@@ -13,9 +13,25 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: D.width - 20
     },
+    headerContentBody: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    headerContentIcon: {
+        marginHorizontal: 10,
+        justifyContent: 'center'
+    },
+    badge: {
+        position: 'absolute',
+        zIndex: 1,
+        top: 3,
+        right: -8
+    },
     input: {
-        backgroundColor: 'white',
-        marginBottom: 10
+        backgroundColor: '#FFF',
+        marginBottom: 10,
+        flex: 1,
     }
 })
 

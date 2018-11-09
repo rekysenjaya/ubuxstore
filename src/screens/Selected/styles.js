@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+    border: {
         flex: 1,
-        justifyContent: 'center'
+        borderBottomColor: '#EDEDED',
+        borderBottomWidth: 1
     }
 });
 

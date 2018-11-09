@@ -23,7 +23,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#EDEDED',
         margin: 5,
-        marginBottom: 0
+        marginBottom: 0,
+        justifyContent: 'center',
+        alignItems:'center',
+        flexDirection: 'row'
     },
     listBody: {
         flex: 1,

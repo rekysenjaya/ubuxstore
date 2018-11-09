@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity } from 'react-native'
+import { Text } from 'react-native'
 import { Card, Icon, View, Button } from 'native-base';
 import { connect } from 'react-redux';
 import styles from './styles';
 import PropTypes from 'prop-types';
 
 import { requestLoadDetailsStoreProductAction, clearStateAction } from '../../actions/detailStoreProductActions'
+import { setListCartAction } from '../../actions/cartActions'
 
 class DetailStoreProduct extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class DetailStoreProduct extends Component {
 
     render() {
         const { load } = this.state
-        const { detailProduct, navigation } = this.props
+        const { detailProduct } = this.props
         return (<Card>
             <Button full iconRight transparent style={styles.borderHeader} onPress={this._loadProduct} >
                 <View style={styles.header} >
@@ -40,13 +41,13 @@ class DetailStoreProduct extends Component {
                     <Icon name={load ? "close" : "add"} />
                 </View>
             </Button>
-            {(Array.isArray(detailProduct) && load) && detailProduct.map((v, i) => <TouchableOpacity activeOpacity={1} key={i} style={[styles.list, detailProduct.length - 1 == i ? { marginBottom: 5 } : null]} onPress={() => navigation.navigate('Selected', { productId: v._id, title: v.name })} >
+            {(Array.isArray(detailProduct) && load) && detailProduct.map((v, i) => <View key={i} style={[styles.list, detailProduct.length - 1 == i ? { marginBottom: 5 } : null]}>
                 <View style={styles.listBody} >
                     <Text style={styles.titleBody} >{v.name}</Text>
                     {v.description && <Text>{v.description}</Text>}
                 </View>
-                <View />
-            </TouchableOpacity>)}
+                <Icon name="add" style={{ marginRight: 10 }} onPress={() => this.props.setListCartActions(v)} />
+            </View>)}
         </Card>)
     }
 }
@@ -55,6 +56,7 @@ DetailStoreProduct.propTypes = {
     navigation: PropTypes.object,
     detailProduct: PropTypes.array,
     storeId: PropTypes.string,
+    setListCartActions: PropTypes.func,
     requestLoadDetailsStoreProductActions: PropTypes.func,
     clearStateActions: PropTypes.func
 }
@@ -66,6 +68,9 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
+        setListCartActions(payload) {
+            dispatch(setListCartAction(payload))
+        },
         requestLoadDetailsStoreProductActions(payload) {
             dispatch(requestLoadDetailsStoreProductAction(payload))
         },

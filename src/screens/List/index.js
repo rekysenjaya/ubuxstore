@@ -54,7 +54,7 @@ class List extends Component {
     render() {
         const data = this._filteList()
         return (
-            <HeaderFilter setState={this._setState} actionSearch={this._actionSearch} actionStatus={this._actionStatus} {...this.state} >
+            <HeaderFilter data={this.props.data} cart={this.props.cart} navigate={() => this.props.navigation.push('Selected')} setState={this._setState} actionSearch={this._actionSearch} actionStatus={this._actionStatus} {...this.state} >
                 <StoreList action={(v) => this.props.navigation.navigate('Detail', { storeId: v.storeId, title: v.tradingName })} data={data} />
                 <Spinner visible={this.props.loading} textContent={"Loading..."} textStyle={styles.spinner} />
             </HeaderFilter>
@@ -64,6 +64,7 @@ class List extends Component {
 
 function mapStateToProps(state) {
     return {
+        cart: state.cartReducer.cart,
         data: state.listReducer.list,
         loading: state.listReducer.loading
     };

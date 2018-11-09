@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { Content } from 'native-base'
 import { connect } from 'react-redux';
 
 import { requestLoadDetailsStoreAction, clearStateAction } from '../../actions/detailStoreActions'
 
+import Headers from '../../components/Headers'
 import DetailStore from '../../components/DetailStore'
 import DetailStoreProduct from '../../components/DetailStoreProduct'
 
@@ -24,19 +24,20 @@ class Detail extends Component {
 
     render() {
         const { detail, loading, loadingProduct, navigation } = this.props
-        const { storeId } = navigation.state.params
+        const { storeId, title } = navigation.state.params
         return (
-            <Content>
+            <Headers title={title} cart={this.props.cart} goBack={() => this.props.navigation.goBack()} navigate={() => this.props.navigation.push('Selected')} >
                 <DetailStore detail={detail} />
                 <DetailStoreProduct {...this.props} storeId={storeId} />
                 <Spinner visible={loading || loadingProduct} textContent={"Loading..."} textStyle={styles.spinner} />
-            </Content>
+            </Headers>
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
+        cart: state.cartReducer.cart,
         detail: state.detailStoreReducer.detail,
         loading: state.detailStoreReducer.loading,
         loadingProduct: state.detailStoreProductReducer.loading
